@@ -202,79 +202,53 @@
           </v-layout>
         </v-container>
       </section>
-<section>
-<template>
+        <section>
+        <template>
   <div class="container">
+    <h1 class="title">
+      Contact
+    </h1>
     <div class="content">
-    <v-row align="center">
-    <v-form
-      name="contact"
-      action="/thank-you"
-      netlify-honeypot="bot-field"
-      method="post"
-      netlify
-      ref="form"
-      v-model="valid"
-      :lazy-validation="lazy"
-     >
-      <v-text-field
-        v-model="name"
-        :counter="10"
-        :rules="nameRules"
-        label="Name"
-        required
-      ></v-text-field>
-
-      <v-text-field
-        v-model="email"
-        :rules="emailRules"
-        label="E-mail"
-        required
-      ></v-text-field>
-        
-      <v-text-field
-        v-model="instagram"
-        :rules="nameRules"
-        label="@instagram"
-        required
-      ></v-text-field>
-        
-     <v-text-field
-        v-model="message"
-        :rules="nameRules"
-        label="message"
-        required
-      ></v-text-field>
-
-      <v-btn
-        :disabled="!valid"
-        color="success"
-        class="mr-4"
-        @click="validate"
-      >
-        Validate
-      </v-btn>
-
-      <v-btn
-        color="error"
-        class="mr-4"
-        @click="reset"
-      >
-        Reset Form
-      </v-btn>
-
-      <v-btn
-        color="warning"
-        @click="resetValidation"
-      >
-        Reset Validation
-      </v-btn>
-    </v-form>
-   </v-row> 
-   </div>
+      <form name="contact" action="/thank-you" netlify-honeypot="bot-field" method="post" netlify>
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">     
+          <label>Don’t fill this out: <input name="bot-field"></label>   
+        </p>
+        <label class="form-label" for="name">
+          Name:
+        </label>
+        <input class="form-field" name="name" id="name" />
+        <label class="form-label" for="email">
+          Email:
+        </label>
+        <input class="form-field" name="email" id="email" />
+        <label class="form-label" for="message">
+          Message:
+        </label>
+        <textarea class="form-field" name="message" id="message"></textarea>
+        <input class="form-button" type="submit" value="Send message" />
+      </form>
+    </div>
   </div>
 </template>
-</section>
+        </section>
+<script>
+export default {
+  name: "QAForm",
+  methods: {
+    updatePanelist (ev) {
+      this.currentPanelist = ev.target.value
+    }
+  },
+  data () {
+    return {
+      panelists: ['Evan You', 'Chris Fritz'],
+      currentPanelist: 'Evan You'
+    }
+  }
+}
+</script>
+        </section>
       <v-footer color="blue darken-2">
         <v-layout row wrap align-center>
           <v-flex xs12>
